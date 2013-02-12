@@ -199,7 +199,7 @@ class ControllerCheckoutGuest extends Controller {
 			}
                         
                         if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
-            $this->error['telephone']=$this->language->get('error_telephone-no');
+           // $this->error['telephone']=$this->language->get('error_telephone-no');
         }
 
 			// Customer Group

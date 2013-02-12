@@ -26,7 +26,7 @@
     </table>
       <tr>
 <!--        <td><?php echo $result['address']; ?></td>-->
-          <td style="text-align: left;"><a href="<?php echo $result['update']; ?>" class="button"><?php echo $button_edit; ?></a> &nbsp; <a href="<?php echo $result['delete']; ?>" class="button"><?php echo $button_delete; ?></a> &nbsp; <a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></td>
+          <td style="text-align: left;"><a href="<?php echo $result['update']; ?>" class="button"><?php echo $button_edit; ?></a> &nbsp; <a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></td>
       </tr>
   </div>
   <?php } ?>

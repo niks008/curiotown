@@ -69,19 +69,18 @@
   <br />
   <span class="required">*</span> <?php echo $entry_country; ?><br />
   <select name="country_id" class="large-field">
-    <option value=""><?php echo $text_select; ?></option>
+    <option value="" selected="selected"><?php echo $text_select; ?></option>
     <?php foreach ($countries as $country) { ?>
-    <?php if ($country['country_id'] == $country_id) { ?>
-    <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
-    <?php } else { ?>
+    
     <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-    <?php } ?>
+   
     <?php } ?>
   </select>
   <br />
   <br />
   <span class="required">*</span> <?php echo $entry_zone; ?><br />
   <select name="zone_id" class="large-field">
+      <option value="" selected="selected"><?php echo $text_select; ?></option>
   </select>
   <br />
   <br />

@@ -5,7 +5,7 @@ $_['heading_title']        = 'My Affiliate Account';
 // Text
 $_['text_account']         = 'Account';
 
-$_['text_my_account']      = 'My Affiliate Account';
+$_['text_my_account']      = 'Affiliate Account LoggedIn ';
 $_['text_my_tracking']     = 'My Tracking Information';
 $_['text_my_transactions'] = 'My Transactions';
 $_['text_edit']            = 'Edit your account information';

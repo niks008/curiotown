@@ -22,7 +22,7 @@ $_['text_no_reviews']   = 'There are no reviews for this product.';
 $_['text_on']           = ' on ';
 $_['text_note']         = '<span style="color: #FF0000;">Note:</span> HTML is not translated!';
 $_['text_share']        = 'Share';
-$_['text_success']      = 'Thank you for your review. It has been submitted to the webmaster for approval.';
+$_['text_success']      = 'Thank you for your review. It has been submitted for approval.';
 $_['text_upload']       = 'Your file was successfully uploaded!';
 $_['text_wait']         = 'Please Wait!';
 $_['text_tags']         = 'Tags:';

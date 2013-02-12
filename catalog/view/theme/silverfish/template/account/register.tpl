@@ -50,7 +50,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> <?php echo $entry_fax; ?></td>
+          <td> <?php echo $entry_fax; ?></td>
           <td><input type="text" maxlength="10" minlength="3" name="fax" value="<?php echo $fax; ?>" /> <?php if ($error_fax) { ?>
             <span class="error"><?php echo $error_fax; ?></span>
             <?php } ?></td>
@@ -120,13 +120,9 @@
         <tr>
           <td><span class="required">*</span> <?php echo $entry_country; ?></td>
           <td><select name="country_id">
-              <option value=""><?php echo $text_select; ?></option>
+              <option value="" selected="selected"><?php echo $text_select; ?></option>
               <?php foreach ($countries as $country) { ?>
-              <?php if ($country['country_id'] == $country_id) { ?>
-              <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
-              <?php } else { ?>
               <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-              <?php } ?>
               <?php } ?>
             </select>
             <?php if ($error_country) { ?>
@@ -136,6 +132,7 @@
         <tr>
           <td><span class="required">*</span> <?php echo $entry_zone; ?></td>
           <td><select name="zone_id">
+                  <option value="" selected="selected"><?php echo $text_select; ?></option>
             </select>
             <?php if ($error_zone) { ?>
             <span class="error"><?php echo $error_zone; ?></span>

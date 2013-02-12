@@ -7,7 +7,7 @@
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
   </div>
-<?php echo $column_left; ?>
+
 
 <div id="affiliate-right">
     
@@ -17,7 +17,9 @@
 <div id="content-affiliate"><?php echo $content_top; ?>
     </br>
 <!--  <h1><?php echo $heading_title; ?></h1>-->
-<!--  <h2><?php echo $text_my_account; ?></h2>
+  <h1><?php echo $text_my_account; ?></h1>
+  <?php echo $column_left; ?>
+  <!--
   <div class="content">
     <ul>
       <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>

@@ -38,14 +38,14 @@
   
  <!-- <h1><?php echo $heading_title; ?></h1> -->
   <?php if ($thumb || $description) { ?>
-  <div class="category-info">
+<!--  <div class="category-info">
     <?php if ($thumb) { ?>
     <div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
     <?php } ?>
     <?php if ($description) { ?>
     <?php echo $description; ?>
     <?php } ?>
-  </div>
+  </div>-->
   <?php } ?>
   <?php if ($categories) { ?>
  <!-- <h2><?php echo $text_refine; ?></h2> -->
@@ -135,7 +135,7 @@
       </div>
       <?php } ?>
       <?php if ($product['rating']) { ?>
-      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+<!--      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>-->
       <?php } ?>
    <!--   <div class="cart">
         <input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />

@@ -116,14 +116,14 @@
       </tr>
       <?php } ?>
       <?php if ($shipping_status) { ?>
-      <tr class="highlight">
+<!--      <tr class="highlight">
         <td><?php if ($next == 'shipping') { ?>
           <input type="radio" name="next" value="shipping" id="shipping_estimate" checked="checked" />
           <?php } else { ?>
           <input type="radio" name="next" value="shipping" id="shipping_estimate" />
           <?php } ?></td>
         <td><label for="shipping_estimate"><?php echo $text_shipping_estimate; ?></label></td>
-      </tr>
+      </tr>-->
       <?php } ?>
     </table>
   </div>

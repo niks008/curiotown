@@ -210,6 +210,8 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$this->data['fax'] = '';
 		}
+                
+                
 		
 		if (isset($this->request->post['company'])) {
     		$this->data['company'] = $this->request->post['company'];
@@ -379,13 +381,18 @@ class ControllerAccountRegister extends Controller {
 	if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
             $this->error['telephone']=$this->language->get('error_telephone-no');
         }
-        
-        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
+       
+            if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
       		$this->error['fax'] = $this->language->get('error_fax');
-    	}
-	if(!preg_match('/^\d+$/', $this->request->post['fax'])){
-            $this->error['fax']=$this->language->get('error_fax-no');
-        }
+            }
+            if(!preg_match('/^\d+$/', $this->request->post['fax'])){
+                $this->error['fax']=$this->language->get('error_fax-no');
+            }
+        
+        
+        
+            
+        
         
 		// Customer Group
 		$this->load->model('account/customer_group');
@@ -439,7 +446,7 @@ class ControllerAccountRegister extends Controller {
       		$this->error['country'] = $this->language->get('error_country');
     	}
 		
-    	if ($this->request->post['zone_id'] == '') {
+        	if ($this->request->post['zone_id'] == '') {
       		$this->error['zone'] = $this->language->get('error_zone');
     	}
 

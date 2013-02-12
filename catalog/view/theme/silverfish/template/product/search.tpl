@@ -65,20 +65,20 @@
         <?php } ?>
         <?php } ?>
          <?php } ?>
-      </select>
+      </select></br></br>
       <?php if ($filter_sub_category) { ?>
-<!--      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" checked="checked" />-->
+      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" checked="checked" />
       <?php } else { ?>
-<!--      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" />-->
+      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" />
       <?php } ?>
-<!--      <label for="sub_category"><?php echo $text_sub_category; ?></label>-->
+      <label for="sub_category"><?php echo $text_sub_category; ?></label>
     </p>
     <?php if ($filter_description) { ?>
-<!--    <input type="checkbox" name="filter_description" value="1" id="description" checked="checked" />-->
+    <input type="checkbox" name="filter_description" value="1" id="description" checked="checked" />
     <?php } else { ?>
-<!--    <input type="checkbox" name="filter_description" value="1" id="description" />-->
+    <input type="checkbox" name="filter_description" value="1" id="description" />
     <?php } ?>
-<!--    <label for="description"><?php echo $entry_description; ?></label>-->
+    <label for="description"><?php echo $entry_description; ?></label>
   </div>
   <div class="buttons">
     <div class="left"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>

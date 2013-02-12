@@ -220,11 +220,12 @@
           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
           &nbsp;
           <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" />
+          &nbsp; <div id="add-to-wishlist"><a onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a></div><br />
         </div>
   
        <!-- <div><span>&nbsp;&nbsp;&nbsp;<?php echo $text_or; ?>&nbsp;&nbsp;&nbsp;</span></div> -->
-     <!--   <div><a onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a><br />
-          <a onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a></div> -->
+          
+<!--          <a onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a></div> -->
         <?php if ($minimum > 1) { ?>
         <div class="minimum"><?php echo $text_minimum; ?></div>
         <?php } ?>
@@ -330,7 +331,7 @@
   <?php if ($review_status) { ?>
   <div id="tab-review" class="tab-content">
       <div id="reviewheader">
-          <h8>Reviews</h8>
+          <h8>Reviews</h8></br>
       </div>
       <div id="review"></div>
     </br>
@@ -343,7 +344,7 @@
 <!--    <span style="font-size: 11px;"><?php echo $text_note; ?></span><br /> -->
     <br /></br>
     <h8 id="review-title"><?php $text_write; ?></h8></br>
-   <b><?php echo $entry_rating; ?></b></br><span><?php echo $entry_bad; ?></span>&nbsp;
+   <b><b><span class="required">*</span><?php echo $entry_rating; ?></b></br><span><?php echo $entry_bad; ?></span>&nbsp;
     <input type="radio" name="rating" value="1" />
     &nbsp;
     <input type="radio" name="rating" value="2" />
@@ -355,8 +356,8 @@
     <input type="radio" name="rating" value="5" />
  &nbsp;<span><?php echo $entry_good; ?></span><br />
     <br /></br>
-    <b><?php echo $entry_captcha; ?></b><br /></br>
-    <b><span class="required">*</span><input type="text" name="captcha" value="" /></b>
+    <b><span class="required">*</span><?php echo $entry_captcha; ?></b><br /></br>
+    <input type="text" name="captcha" value="" />
     <br /></br>
     <img src="index.php?route=product/product/captcha" alt="" id="captcha" /></br></br>
     <div class="buttons">
