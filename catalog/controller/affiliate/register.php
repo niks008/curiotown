@@ -111,6 +111,12 @@ class ControllerAffiliateRegister extends Controller {
 		} else {
 			$this->data['error_telephone'] = '';
 		}
+                
+                if (isset($this->error['fax'])) {
+			$this->data['error_fax'] = $this->error['fax'];
+		} else {
+			$this->data['error_fax'] = '';
+		}
 		
 		if (isset($this->error['password'])) {
 			$this->data['error_password'] = $this->error['password'];
@@ -365,6 +371,22 @@ class ControllerAffiliateRegister extends Controller {
         
         if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
             $this->error['telephone']=$this->language->get('error_telephone-no');
+        }
+        
+        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
+      		$this->error['fax'] = $this->language->get('error_fax');
+    	}
+        
+        if(!preg_match('/^\d+$/', $this->request->post['fax'])){
+            $this->error['fax']=$this->language->get('error_fax-no');
+        }
+        
+        if ((utf8_strlen($this->request->post['postcode']) < 3) || (utf8_strlen($this->request->post['postcode']) > 32)) {
+      		$this->error['postcode'] = $this->language->get('error_postcode');
+    	}
+        
+        if(!preg_match('/^\d+$/', $this->request->post['postcode'])){
+            $this->error['postcode']=$this->language->get('error_postcode-no');
         }
         
         

@@ -1053,6 +1053,7 @@ background-image: -webkit-gradient(
 	font-weight: bold;
         float: left;
         display: block;
+/*        margin-left: 6px;*/
         text-indent: -5px;
 }
 .error {

@@ -47,8 +47,10 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> <?php echo $entry_fax; ?></td>
-          <td><input type="text" name="fax" maxlength="10" value="<?php echo $fax; ?>" /></td>
+          <td><span class="required">*</span><?php echo $entry_fax; ?></td>
+          <td><input type="text" maxlength="10" minlength="3" name="fax" value="<?php echo $fax; ?>" /> <?php if ($error_fax) { ?>
+            <span class="error"><?php echo $error_fax; ?></span>
+            <?php } ?></td>
         </tr>
       </table>
     </div>
@@ -82,14 +84,14 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span id="postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></td>
-          <td><input type="text" name="postcode" value="<?php echo $postcode; ?>" />
+          <td><span class="required">*</span> <?php echo $entry_postcode; ?></td>
+          <td><input type="text" name="postcode" maxlength="10" value="<?php echo $postcode; ?>" />
             <?php if ($error_postcode) { ?>
             <span class="error"><?php echo $error_postcode; ?></span>
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> <?php echo $entry_country; ?></td>
+          <td> <?php echo $entry_country; ?></td>
           <td><select name="country_id">
               <option value="false" selected="selected"><?php echo $text_select; ?></option>
               <?php foreach ($countries as $country) { ?>
@@ -102,7 +104,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> <?php echo $entry_zone; ?></td>
+          <td> <?php echo $entry_zone; ?></td>
           <td><select name="zone_id">
                   <option value="false" selected="selected"><?php echo $text_select; ?></option>
             </select>

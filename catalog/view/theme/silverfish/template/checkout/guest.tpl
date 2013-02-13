@@ -16,8 +16,8 @@
   <input type="text" name="telephone" maxlength="10" value="<?php echo $telephone; ?>" class="large-field" />
   <br />
   <br />
-  <?php echo $entry_fax; ?><br />
-  <input type="text" name="fax" value="<?php echo $fax; ?>" class="large-field" />
+  <span class="required">*</span> <?php echo $entry_fax; ?><br />
+  <input type="text" name="fax" maxlength="10" value="<?php echo $fax; ?>" class="large-field" />
   <br />
   <br />
 </div>
@@ -63,8 +63,8 @@
   <input type="text" name="city" value="<?php echo $city; ?>" class="large-field" />
   <br />
   <br />
-  <span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
-  <input type="text" name="postcode" value="<?php echo $postcode; ?>" class="large-field" />
+  <span class="required">*</span> <?php echo $entry_postcode; ?><br />
+  <input type="text" name="postcode" maxlength="10" value="<?php echo $postcode; ?>" class="large-field" />
   <br />
   <br />
   <span class="required">*</span> <?php echo $entry_country; ?><br />

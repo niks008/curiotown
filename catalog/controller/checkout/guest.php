@@ -53,9 +53,15 @@ class ControllerCheckoutGuest extends Controller {
 		}
 
 		if (isset($this->session->data['guest']['fax'])) {
-			$this->data['fax'] = $this->session->data['guest']['fax'];				
+			$this->data['fax'] = $this->session->data['guest']['fax'];		
 		} else {
 			$this->data['fax'] = '';
+		}
+                
+                if (isset($this->session->data['guest']['postcode'])) {
+			$this->data['postcode'] = $this->session->data['guest']['postcode'];				
+		} else {
+			$this->data['postcode'] = '';
 		}
 
 		if (isset($this->session->data['guest']['payment']['company'])) {
@@ -123,6 +129,8 @@ class ControllerCheckoutGuest extends Controller {
 		} else {
 			$this->data['city'] = '';
 		}
+                
+                
 
 		if (isset($this->session->data['guest']['payment']['country_id'])) {
 			$this->data['country_id'] = $this->session->data['guest']['payment']['country_id'];			  	
@@ -199,8 +207,24 @@ class ControllerCheckoutGuest extends Controller {
 			}
                         
                         if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
-           // $this->error['telephone']=$this->language->get('error_telephone-no');
-        }
+//                               $this->error['telephone']=$this->language->get('error_telephone-no');
+                        }
+                        
+                        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
+				$json['error']['fax'] = $this->language->get('error_fax');
+			}
+                        
+                        if(!preg_match('/^\d+$/', $this->request->post['fax'])){
+//                               $this->error['fax']=$this->language->get('error_fax-no');
+                        }
+                        
+                        if ((utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+				$json['error']['postcode'] = $this->language->get('error_postcode');
+			}
+                        
+                        if(!preg_match('/^\d+$/', $this->request->post['postcode'])){
+//                               $this->error['postcode']=$this->language->get('error_postcode-no');
+                        }
 
 			// Customer Group
 			$this->load->model('account/customer_group');
@@ -274,6 +298,7 @@ class ControllerCheckoutGuest extends Controller {
 			$this->session->data['guest']['payment']['tax_id'] = $this->request->post['tax_id'];
 			$this->session->data['guest']['payment']['address_1'] = $this->request->post['address_1'];
 			$this->session->data['guest']['payment']['address_2'] = $this->request->post['address_2'];
+                        
 			$this->session->data['guest']['payment']['postcode'] = $this->request->post['postcode'];
 			$this->session->data['guest']['payment']['city'] = $this->request->post['city'];
 			$this->session->data['guest']['payment']['country_id'] = $this->request->post['country_id'];
