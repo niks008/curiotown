@@ -50,7 +50,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span><?php echo $entry_fax; ?></td>
+          <td><?php echo $entry_fax; ?></td>
           <td><input type="text" maxlength="10" minlength="3" name="fax" value="<?php echo $fax; ?>" /> <?php if ($error_fax) { ?>
             <span class="error"><?php echo $error_fax; ?></span>
             <?php } ?></td>

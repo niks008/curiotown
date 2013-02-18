@@ -1,3 +1,4 @@
+
 <?php echo $header; ?>
 <?php if ($success) { ?>
 <div class="success"><?php echo $success; ?></div>
@@ -10,16 +11,16 @@
 
 
 <div id="affiliate-right">
-    
+    <?php echo $column_left; ?>
   <!-- <?php echo $column_right; ?>-->
 </div>
     
 <div id="content-affiliate"><?php echo $content_top; ?>
     </br>
-<!--  <h1><?php echo $heading_title; ?></h1>-->
-  <h1><?php echo $text_my_account; ?></h1>
-  <?php echo $column_left; ?>
-  <!--
+  <h1><?php echo $heading_title; ?></h1>
+<!--  <h1><?php echo $text_my_account; ?></h1>-->
+ 
+  
   <div class="content">
     <ul>
       <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
@@ -37,9 +38,9 @@
   <div class="content">
     <ul>
       <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-      
+<!--      <li><a href="<?php echo $logoutnew; ?>">Logout</a></li>-->
     </ul>
-  </div>-->
+  </div>
 
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

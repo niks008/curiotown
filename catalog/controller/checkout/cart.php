@@ -181,7 +181,6 @@ class ControllerCheckoutCart extends Controller {
 
       		foreach ($products as $product) {
 				$product_total = 0;
-					
 				foreach ($products as $product_2) {
 					if ($product_2['product_id'] == $product['product_id']) {
 						$product_total += $product_2['quantity'];
@@ -423,10 +422,25 @@ class ControllerCheckoutCart extends Controller {
         
         public function stockcheck() {
             if (!empty($this->request->post['value'])) {
-                $this->cart->update($this->request->post['key'], $this->request->post['value']);
+                $this->cart->update($this->request->post['newKey'], $this->request->post['value']);
             if (!$this->cart->hasStock() ) {
                     echo '<div class="warning">Products are not available in the desired quantity or not in stock!</div>';	
 	   }else{
+                    die('success');
+                }
+            }
+            
+          
+        }
+        
+        public function stockcheckNew() {
+            if (!empty($this->request->post['value'])) {
+                $this->cart->update($this->request->post['newKey'], $this->request->post['value']);
+            if (!$this->cart->hasStock() ) {
+                    echo '<div class="warning">Products are not available in the desired quantity or not in stock!</div>';
+                    $this->cart->remove($this->request->post['key']);
+	   }else{
+	   				$this->cart->remove($this->request->post['key']);
                     die('success');
                 }
             }

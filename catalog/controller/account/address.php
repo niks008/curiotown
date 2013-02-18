@@ -507,6 +507,13 @@ class ControllerAccountAddress extends Controller {
     	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
       		$this->error['address_1'] = $this->language->get('error_address_1');
     	}
+        
+        if ((utf8_strlen($this->request->post['postcode']) < 3) || (utf8_strlen($this->request->post['postcode']) > 32)) {
+            $this->error['postcode'] = $this->language->get('error_postcode');
+        }
+        if(!preg_match('/^\d+$/', $this->request->post['postcode'])){
+            $this->error['postcode']=$this->language->get('error_postcode-no');
+        }
 
     	if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
       		$this->error['city'] = $this->language->get('error_city');

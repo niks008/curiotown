@@ -5,7 +5,8 @@
     <?php } ?>
   </div>
 
-<?php echo $column_left; ?><?php echo $column_right; ?>
+<?php echo $column_left; ?>
+    <?php echo $column_right; ?>
 
 
 <div id="content"><?php echo $content_top; ?>
@@ -216,7 +217,7 @@
       <?php } ?>
       <div class="cart">
         <div><?php echo $text_qty; ?>
-          <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" />
+          <input type="text" class="quantity" name="quantity" size="2" value="<?php echo $minimum; ?>" />
           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
           &nbsp;
           <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" />
@@ -249,13 +250,19 @@
      
        <div id="product_addthis">   
   <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+  
+<!--                 <span class='st_sharethis_large' displayText='ShareThis'></span>-->
+                    <span class='st_facebook_large' displayText='Facebook'></span>
+                    <span class='st_twitter_large' displayText='Tweet'></span>
+                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                    <span class='st_email_large' displayText='Email'></span>
+<!--            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                  <a class="addthis_button_preferred_1"></a>
                  <a class="addthis_button_preferred_2"></a>
                  <a class="addthis_button_preferred_3"></a>
-<!--             <a class="addthis_button_compact"></a>-->
-            </div>
-        <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> 
+             <a class="addthis_button_compact"></a>
+            </div>-->
+<!--        <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> -->
          <!-- AddThis Button END --> 
        </div>
       <?php if ($review_status) { ?>
@@ -270,6 +277,7 @@
       <?php } ?>
     </div>
   </div>
+    
     
 <!--  <div id="tabs" class="htabs"><a href="#tab-description"><?php echo $tab_description; ?></a>
     <?php if ($attribute_groups) { ?>
@@ -391,30 +399,22 @@
         <?php } ?>
         <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
         <?php if ($product['price']) { ?>
-        <div class="price">
-          <?php  if (!$product['special']) { ?>
-            
-            <div id="price-cart">
-              
-              <span><div
-                      id="featuredprice"><?php echo $product['price']; ?></div> <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
-          
-          </div>
-            
-          <?php   $product['price']; ?>
-          <?php } else { ?>
-            
-            <div id="price-cart">
-              
-              <span><div
-                      id="featuredprice"><?php echo $product['special']; ?></div> <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
-          
-          </div>
-            
-<!--          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>-->
-          <?php } ?>
-       </div>
+       <div class="price">
+        <?php if (!$product['special']) { ?>
+        <?php echo $product['price']; ?>
+        <?php } else { ?>
+        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
         <?php } ?>
+        <!--<?php if ($product['tax']) { ?>-->
+<!--        <br />-->
+<!--        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>-->
+        <!--<?php } ?>-->
+        
+      </div>
+        <?php } ?>
+        <div class="cart">
+        <input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />
+      </div>
         <?php if ($product['rating']) { ?>
 <!--        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>-->
         <?php } ?>
@@ -605,4 +605,47 @@ $('.datetime').datetimepicker({
 });
 $('.time').timepicker({timeFormat: 'h:m'});
 //--></script> 
+<script type="text/javascript">
+$('document').ready(function(){
+    $('.quantity').live('input', function() {
+    
+    var value = $(this).val();
+    
+    var key = $('input[name="product_id"]').val();
+    if(value != ""){
+    if($.isNumeric(value)){
+    
+                                    var data ={
+                                            key:key,
+                                            value:value,
+                                            newKey:key
+                                    }
+                                        $.ajax({
+                                                type: 'POST',
+                                                url: 'index.php?route=checkout/cart/stockcheckNew',
+                                                dataType: "html",
+                                                data : data,
+                                                success: function(html){
+                                                if(html=="success"){
+                                                    $.colorbox.close();
+                                                 }else{
+                                                   $.colorbox({html:html});
+                                                 }
+                                                
+                                                /*alert(html);*/
+                                                    /*$('.warning').replaceWith(html);*/
+                                                        },
+                                                error : function(){
+                                                        console.log('Error');
+
+                                                    }
+                                           });
+            }else{
+       		alert('Numeric values only.');
+       }
+       }
+    })
+                                      
+ });
+</script>
 <?php echo $footer; ?>

@@ -17,6 +17,6 @@ $_['entry_email']                   = 'Affiliate E-Mail:';
 $_['entry_password']                = 'Password:';
 
 // Error
-$_['error_login']                   = 'Warning: No match for E-Mail Address and/or Password.';
+$_['error_login']                   = 'Your account has been sent to admin for approval.';
 $_['error_approved']                = 'Warning: Your account requires approval before you can login.';
 ?>

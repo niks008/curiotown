@@ -6,6 +6,7 @@ $_['text_shopping_cart']  = 'Shopping Cart';
 $_['text_search']         = 'Search';
 $_['text_special']        = 'LIMITED EDITION';
 $_['text_gifting']        = 'GIFTING IDEAS';
+$_['text_limited']        = 'LIMITED EDITION';
 $_['text_curators']       = 'CURATORS';
 $_['text_email']          = 'email';
 $_['text_password']       = 'password';

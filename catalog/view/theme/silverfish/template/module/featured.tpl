@@ -21,27 +21,34 @@
           <?php if (!$product['special']) { ?>
           
           
-          <div id="price-cart">
+<!--          <div id="price-cart">-->
               
-              <span><div
-                      id="featuredprice"><?php echo $product['price']; ?></div> <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
+              <?php echo $product['price']; ?>
+              
           
-          </div>
+<!--          </div>-->
           
           
           <?php } else { ?>
             
-            <div id="price-cart">
+<!--            <div id="price-cart">-->
               
-              <span><div
-                      id="featuredprice"><?php echo $product['special']; ?></div> <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
+              <?php echo $product['special']; ?>
+<!--                <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>-->
           
-          </div>
+<!--          </div>-->
           
-<!--          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>-->
+          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
           <?php } ?>
           
         </div>
+        <div class="cart">
+        <input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />
+        </div>
+
+
+
+
         <?php } ?>
         <?php if ($product['rating']) { ?>
      <!--

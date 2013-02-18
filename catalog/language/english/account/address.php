@@ -32,6 +32,7 @@ $_['error_lastname']    = 'Last Name must be between 1 and 32 characters!';
 $_['error_vat']         = 'VAT number is invalid!';
 $_['error_address_1']   = 'Address must be between 3 and 128 characters!';
 $_['error_postcode']    = 'Postcode must be between 2 and 10 characters!';
+$_['error_postcode-no']    = 'Postcode must contain only numeric value!';
 $_['error_city']        = 'City must be between 2 and 128 characters!';
 $_['error_country']     = 'Please select a country!';
 $_['error_zone']        = 'Please select a region / state!';

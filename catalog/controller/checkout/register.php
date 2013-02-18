@@ -147,8 +147,16 @@ class ControllerCheckoutRegister extends Controller {
 				$json['error']['warning'] = $this->language->get('error_exists');
 			}
 			
-			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-				$json['error']['telephone'] = $this->language->get('error_telephone');
+			if ((utf8_strlen($this->request->post['telephone']) > 96) || !preg_match('/^\d+$/', $this->request->post['telephone'])) {
+				$json['error']['telephone'] = $this->language->get('error_telephone-no');
+			}
+                        
+                        if ((utf8_strlen($this->request->post['fax']) > 96) || !preg_match('/^\d+$/', $this->request->post['fax'])) {
+				$json['error']['fax'] = $this->language->get('error_fax-no');
+			}
+                        
+                        if ((utf8_strlen($this->request->post['postcode']) > 96) || !preg_match('/^\d+$/', $this->request->post['postcode'])) {
+				$json['error']['postcode'] = $this->language->get('error_postcode-no');
 			}
 	
 			// Customer Group

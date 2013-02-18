@@ -16,7 +16,7 @@
   <input type="text" name="telephone" maxlength="10" value="<?php echo $telephone; ?>" class="large-field" />
   <br />
   <br />
-  <span class="required">*</span> <?php echo $entry_fax; ?><br />
+   <?php echo $entry_fax; ?><br />
   <input type="text" name="fax" maxlength="10" value="<?php echo $fax; ?>" class="large-field" />
   <br />
   <br />

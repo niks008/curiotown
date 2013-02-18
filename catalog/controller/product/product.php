@@ -33,6 +33,7 @@ class ControllerProductProduct extends Controller {
 						'href'      => $this->url->link('product/category', 'path=' . $path),
 						'separator' => $this->language->get('text_separator')
 					);
+					$this->data['backMe'] = $this->url->link('product/category', 'path=' . $path);
 				}
 			}
 		}
@@ -574,6 +575,18 @@ class ControllerProductProduct extends Controller {
 		}	
 		
 		$this->response->setOutput(json_encode($json));		
+	}
+	
+	public function hasStock(){
+		$prodId = $this->request->post['prodId'];
+		$val = $this->request->post['value'];
+		$this->load->model('catalog/product');
+		$quantity = $this->model_catalog_product->getStock($prodId);
+		if ($quantity < $val) {
+                    echo '<div class="warning">Products are not available in the desired quantity or not in stock!</div>';	
+	   }else{
+                    die('success');
+                }
 	}
 }
 ?>

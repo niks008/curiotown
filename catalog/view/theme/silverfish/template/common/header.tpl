@@ -59,6 +59,12 @@ $(function() {
 });
 </script>
 
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-c1675368-9e54-b597-81e3-f771c27e2fb", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+
 <!--<script type="text/javascript">
     $(document).ready(function() {
      
@@ -119,7 +125,7 @@ DD_belatedPNG.fix('#logo img');
   <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
   
   <?php } ?>
-  
+  <?php if(!isset($_SESSION['affiliate_id'])){ ?>
   <div id="free-shipping">
       
       <?php "Free Shipping Above Rs. 1000/-"?>
@@ -259,6 +265,7 @@ DD_belatedPNG.fix('#logo img');
       <h2>Create an account</h2>
   </div> 
  -->
+ <?php } ?>
   <div id="border"></div>
   
 </div>
@@ -321,8 +328,29 @@ DD_belatedPNG.fix('#logo img');
            </ul>
           </div>
     </li>
-    <li><a href="<?php echo $special;?>"><?php echo $text_special; ?></a></li>
-     
+<!--    <li><a href="<?php echo $special;?>"><?php echo $text_special; ?></a></li>-->
+  
+    
+     <?php foreach ($limiteds as $category) { ?>
+            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+            <?php if ($category['children']) { ?>
+            <div>
+                <?php for ($i = 0; $i < count($category['children']);) { ?>
+                <ul>
+                <?php $j = $i + ceil(count($category['children']) / $category['column']); ?>
+                <?php for (; $i < $j; $i++) { ?>
+                <?php if (isset($category['children'][$i])) { ?>
+                <li><a href="<?php echo $category['children'][$i]['href']; ?>"><?php echo $category['children'][$i]['name']; ?></a></li>
+                <?php } ?>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+            </div>
+            <?php } ?>
+            </li>
+            <?php } ?>
+    
+    
     <?php foreach ($gifts as $category) { ?>
             <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
             <?php if ($category['children']) { ?>
@@ -341,6 +369,8 @@ DD_belatedPNG.fix('#logo img');
             <?php } ?>
             </li>
             <?php } ?>
+           
+
       <li><a href="<?php echo $manufacturer ?>"><?php echo $text_curators; ?></a>
           <!--<div>
               <ul>

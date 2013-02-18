@@ -84,6 +84,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_home'] = $this->language->get('text_home');
                 $this->data['text_special'] = $this->language->get('text_special');
                 $this->data['text_gifting'] = $this->language->get('text_gifting');
+                $this->data['text_limited'] = $this->language->get('text_limited');
                 $this->data['text_curators'] = $this->language->get('text_curators');
              
 		$this->data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
@@ -182,7 +183,34 @@ class ControllerCommonHeader extends Controller {
 					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
 				);
                                 
-                            }else{
+                            }else if($category['name'] == 'LIMITED EDITION'){
+                                  $children_data = array();
+				
+				$children = $this->model_catalog_category->getCategories($category['category_id']);
+				
+				foreach ($children as $child) {
+					$data = array(
+						'filter_category_id'  => $child['category_id'],
+						'filter_sub_category' => true
+					);
+					
+					$product_total = $this->model_catalog_product->getTotalProducts($data);
+									
+					$children_data[] = array(
+						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
+						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])	
+					);						
+				}
+				
+				// Level 1
+				$this->data['limiteds'][] = array(
+					'name'     => $category['name'],
+					'children' => $children_data,
+					'column'   => $category['column'] ? $category['column'] : 1,
+					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+				);
+                            }
+                            else{
                                 $children_data = array();
 				
 				$children = $this->model_catalog_category->getCategories($category['category_id']);

@@ -201,30 +201,42 @@ class ControllerCheckoutGuest extends Controller {
 			if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
 				$json['error']['email'] = $this->language->get('error_email');
 			}
+                        
+                        if ((utf8_strlen($this->request->post['telephone']) > 96) || !preg_match('/^\d+$/', $this->request->post['telephone'])) {
+				$json['error']['telephone'] = $this->language->get('error_telephone-no');
+			}
+                        
+                        if ((utf8_strlen($this->request->post['fax']) > 96) || !preg_match('/^\d+$/', $this->request->post['fax'])) {
+				$json['error']['fax'] = $this->language->get('error_fax-no');
+			}
+                        
+                        if ((utf8_strlen($this->request->post['postcode']) > 96) || !preg_match('/^\d+$/', $this->request->post['postcode'])) {
+				$json['error']['postcode'] = $this->language->get('error_postcode-no');
+			}
 			
-			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-				$json['error']['telephone'] = $this->language->get('error_telephone');
-			}
-                        
-                        if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
-//                               $this->error['telephone']=$this->language->get('error_telephone-no');
-                        }
-                        
-                        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
-				$json['error']['fax'] = $this->language->get('error_fax');
-			}
-                        
-                        if(!preg_match('/^\d+$/', $this->request->post['fax'])){
-//                               $this->error['fax']=$this->language->get('error_fax-no');
-                        }
-                        
-                        if ((utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
-				$json['error']['postcode'] = $this->language->get('error_postcode');
-			}
-                        
-                        if(!preg_match('/^\d+$/', $this->request->post['postcode'])){
-//                               $this->error['postcode']=$this->language->get('error_postcode-no');
-                        }
+//			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+//				$json['error']['telephone'] = $this->language->get('error_telephone');
+//			}
+//                        
+//                        if(!preg_match('/^\d+$/', $this->request->post['telephone'])){
+////                               $this->error['telephone']=$this->language->get('error_telephone-no');
+//                        }
+//                        
+//                        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
+//				$json['error']['fax'] = $this->language->get('error_fax');
+//			}
+//                        
+//                        if(!preg_match('/^\d+$/', $this->request->post['fax'])){
+////                               $this->error['fax']=$this->language->get('error_fax-no');
+//                        }
+//                        
+//                        if ((utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+//				$json['error']['postcode'] = $this->language->get('error_postcode');
+//			}
+//                        
+//                        if(!preg_match('/^\d+$/', $this->request->post['postcode'])){
+////                               $this->error['postcode']=$this->language->get('error_postcode-no');
+//                        }
 
 			// Customer Group
 			$this->load->model('account/customer_group');

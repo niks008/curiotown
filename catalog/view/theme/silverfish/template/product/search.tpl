@@ -4,37 +4,11 @@
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
   </div>
-  <div class="product-filter">
-  <!--  <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>-->
-<!--    <div class="limit"><?php echo $text_limit; ?>
-      <select onchange="location = this.value;">
-        <?php foreach ($limits as $limits) { ?>
-        <?php if ($limits['value'] == $limit) { ?>
-        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </div>
-    <div class="sort"><?php echo $text_sort; ?>
-      <select onchange="location = this.value;">
-        <?php foreach ($sorts as $sorts) { ?>
-        <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-        <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </div>-->
-  </div>
-<div class="clear"></div>
-<?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="search-content"><?php echo $content_top; ?>
+    <?php echo $column_left; ?><?php echo $column_right; ?>
+<div id="content"><?php echo $content_top; ?>
   
-<!--  <h1><?php echo $heading_title; ?></h1>-->
-  <b><?php echo $text_critea; ?></b></br></br>
+  <h1><?php echo $text_critea; ?></h1>
+<!--  <b><?php echo $text_critea; ?></b>-->
   <div class="content">
     <p><?php echo $entry_search; ?>
       <?php if ($filter_name) { ?>
@@ -64,11 +38,11 @@
         <?php } ?>
         <?php } ?>
         <?php } ?>
-         <?php } ?>
-      </select></br></br>
+        <?php } ?>
+      </select>
       <?php if ($filter_sub_category) { ?>
       <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" checked="checked" />
-      <?php } else { ?>
+      <?php } else { ?></br></br>
       <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" />
       <?php } ?>
       <label for="sub_category"><?php echo $text_sub_category; ?></label>
@@ -79,14 +53,38 @@
     <input type="checkbox" name="filter_description" value="1" id="description" />
     <?php } ?>
     <label for="description"><?php echo $entry_description; ?></label>
-  </div>
+  </div></br>
   <div class="buttons">
     <div class="left"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>
   </div>
-<!--  <h1><?php echo $text_search; ?></h1>-->
+<!--  <h2><?php echo $text_search; ?></h2>-->
   <?php if ($products) { ?>
-
-  <!-- <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div> -->
+  <div class="product-filter">
+<!--    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>-->
+    <div class="limit"><?php echo $text_limit; ?>
+      <select onchange="location = this.value;">
+        <?php foreach ($limits as $limits) { ?>
+        <?php if ($limits['value'] == $limit) { ?>
+        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
+        <?php } else { ?>
+        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
+        <?php } ?>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="sort"><?php echo $text_sort; ?>
+      <select onchange="location = this.value;">
+        <?php foreach ($sorts as $sorts) { ?>
+        <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
+        <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
+        <?php } else { ?>
+        <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
+        <?php } ?>
+        <?php } ?>
+      </select>
+    </div>
+  </div>
+<!--  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>-->
   <div class="product-list">
     <?php foreach ($products as $product) { ?>
     <div>
@@ -98,14 +96,11 @@
       <?php if ($product['price']) { ?>
       <div class="price">
         <?php if (!$product['special']) { ?>
-        <?php echo $product['price']; ?>
-        <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
+        <?php echo $product['price']; ?> 
+<!--          <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>-->
+          
         <?php } else { ?>
-        
-        <?php echo $product['special']; ?>
-        <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
-        
-<!--        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>-->
+        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
         <?php } ?>
         <?php if ($product['tax']) { ?>
         <br />
@@ -114,14 +109,12 @@
       </div>
       <?php } ?>
       <?php if ($product['rating']) { ?>
-      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+<!--      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>-->
       <?php } ?>
       <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
-  <!--    <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>
-      <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
-  --> 
-  </div>
-  
+<!--      <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>-->
+<!--      <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>-->
+    </div>
     <?php } ?>
   </div>
   <div class="pagination"><?php echo $pagination; ?></div>
@@ -172,10 +165,9 @@ function display(view) {
 		
 		$('.product-list > div').each(function(index, element) {
 			html  = '<div class="right">';
-		/*	html += '  <div class="cart">' + $(element).find('.cart').html() + '</div>';
-			html += '  <div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			html += '  <div class="compare">' + $(element).find('.compare').html() + '</div>';
-                        */
+			html += '  <div class="cart">' + $(element).find('.cart').html() + '</div>';
+//			html += '  <div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
+//			html += '  <div class="compare">' + $(element).find('.compare').html() + '</div>';
 			html += '</div>';			
 			
 			html += '<div class="left">';
@@ -237,10 +229,10 @@ function display(view) {
 				html += '<div class="rating">' + rating + '</div>';
 			}
 						
-		/*	html += '<div class="cart">' + $(element).find('.cart').html() + '</div>';
-			html += '<div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			html += '<div class="compare">' + $(element).find('.compare').html() + '</div>';
-		*/	
+			html += '<div class="cart">' + $(element).find('.cart').html() + '</div>';
+//			html += '<div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
+//			html += '<div class="compare">' + $(element).find('.compare').html() + '</div>';
+			
 			$(element).html(html);
 		});	
 					

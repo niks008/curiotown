@@ -360,12 +360,15 @@ $('document').ready(function(){
     var value = $(this).children('input').val();
     var key = $(this).children('input').attr('name');
     key = key.substring(9);
+    newKey = key.replace(']','');
     key = parseInt(key.replace(']', ''),10);
     if(value != ""){
+    if($.isNumeric(value)){
     
                                     var data ={
                                             key:key,
-                                            value:value
+                                            value:value,
+                                            newKey:newKey
                                     }
                                         $.ajax({
                                                 type: 'POST',
@@ -387,6 +390,9 @@ $('document').ready(function(){
 
                                                     }
                                            });
+            }else{
+            	alert('Numeric values only.');
+            }
             }
     })
                                       

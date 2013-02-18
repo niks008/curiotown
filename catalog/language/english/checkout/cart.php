@@ -13,7 +13,7 @@ $_['text_login']             = 'Attention: You must <a href="%s">login</a> or <a
 $_['text_points']            = 'Reward Points: %s';
 $_['text_items']             = '%s item(s) - %s';
 $_['text_next']              = 'What would you like to do next?';
-$_['text_next_choice']       = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
+$_['text_next_choice']       = 'Choose if you have a discount code or reward points you want to use.';
 $_['text_use_coupon']        = 'Use Coupon Code';
 $_['text_use_voucher']       = 'Use Gift Voucher';
 $_['text_use_reward']        = 'Use Reward Points (Available %s)';
