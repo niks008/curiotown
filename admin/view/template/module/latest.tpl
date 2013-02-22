@@ -15,7 +15,6 @@
     </div>
     <div class="content">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
-          
         <table id="module" class="list">
           <thead>
             <tr>

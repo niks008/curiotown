@@ -26,7 +26,7 @@ class ControllerAffiliateAccount extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
     	$this->data['heading_title'] = $this->language->get('heading_title');
-
+        $this->data['logoutnew'] = $this->url->link('affiliate/logout');
     	$this->data['text_my_account'] = $this->language->get('text_my_account');
     	$this->data['text_my_tracking'] = $this->language->get('text_my_tracking');
 		$this->data['text_my_transactions'] = $this->language->get('text_my_transactions');

@@ -9,7 +9,7 @@
   
   <h1><?php echo $text_critea; ?></h1>
 <!--  <b><?php echo $text_critea; ?></b>-->
-  <div class="content">
+  <div class="content" style="float:left;">
     <p><?php echo $entry_search; ?>
       <?php if ($filter_name) { ?>
       <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" />
@@ -54,12 +54,12 @@
     <?php } ?>
     <label for="description"><?php echo $entry_description; ?></label>
   </div></br>
-  <div class="buttons">
+  <div class="buttons" style="float:left;clear:left;margin-bottom:0;">
     <div class="left"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>
   </div>
 <!--  <h2><?php echo $text_search; ?></h2>-->
   <?php if ($products) { ?>
-  <div class="product-filter">
+  <div class="product-filter" style="clear:left;float:right;">
 <!--    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>-->
     <div class="limit"><?php echo $text_limit; ?>
       <select onchange="location = this.value;">

@@ -6,6 +6,13 @@ class ControllerProductProduct extends Controller {
 		$this->language->load('product/product');
 	
 		$this->data['breadcrumbs'] = array();
+                
+                $this->document->addScript('catalog/view/javascript/jquery/jquery.jqzoom-core-pack.js');
+		if (file_exists('catalog/view/theme/' . $this->config->get('config_template') . '/stylesheet/jquery.jqzoom.css')) {
+			$this->document->addStyle('catalog/view/theme/' . $this->config->get('config_template') . '/stylesheet/jquery.jqzoom.css');
+		} else {
+			$this->document->addStyle('catalog/view/theme/default/stylesheet/jquery.jqzoom.css');
+		}
 
 		$this->data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_home'),
@@ -37,7 +44,11 @@ class ControllerProductProduct extends Controller {
 				}
 			}
 		}
-		
+		if (isset($this->request->get['path'])) {
+                    $this->data['newPath'] = $this->url->link('product/category', 'path=' . $path);
+                }else{
+                     $this->data['newPath'] = $this->url->link('common/home');
+                }
 		$this->load->model('catalog/manufacturer');	
 		
 		if (isset($this->request->get['manufacturer_id'])) {
@@ -188,6 +199,10 @@ class ControllerProductProduct extends Controller {
                                     $this->data['stock_color']='red';
                                 }
                                 
+//                                if ($this->data['stock']=="Sold"){
+//                                    $this->data['stock_color']='red';
+//                                }
+                                
 			} elseif ($this->config->get('config_stock_display')) {
 				$this->data['stock'] = $product_info['quantity'];
 			} else {
@@ -205,6 +220,7 @@ class ControllerProductProduct extends Controller {
 			
 			if ($product_info['image']) {
 				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+                                $this->data['thumb2'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height'));
 			} else {
 				$this->data['thumb'] = '';
 			}
@@ -216,7 +232,8 @@ class ControllerProductProduct extends Controller {
 			foreach ($results as $result) {
 				$this->data['images'][] = array(
 					'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height')),
-					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height'))
+					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height')),
+					'thumb2' => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'))
 				);
 			}	
 						

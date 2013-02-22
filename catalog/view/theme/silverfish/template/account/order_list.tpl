@@ -22,12 +22,13 @@
     </div>
   </div>
   <?php } ?>
-  <div class="pagination"><?php echo $pagination; ?></div>
+  
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <?php } ?>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
+    <div class="left"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
   </div>
+  <div class="pagination"><?php echo $pagination; ?></div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

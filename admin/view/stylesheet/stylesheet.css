@@ -94,6 +94,24 @@ label {
 	text-decoration: none;
 	padding: 5px;
 }
+#toTop {
+	width:100px;
+        border:0px solid #ccc;
+        background:#0E5482;
+        text-align:center;
+        padding:5px;
+        position:fixed; /* this is the magic */
+        bottom:340px; /* together with this to put the div at the bottom*/
+        right:10px;
+        cursor:pointer;
+        display:none;
+        color:#ffffff;
+        font-family:verdana;
+        font-size:12px;
+        font-weight: bold;
+        z-index: 25;
+/*        border-radius: 8px;*/
+}
 #menu > ul > li + li {
 	background: url('../image/split.png') center left no-repeat;
 }

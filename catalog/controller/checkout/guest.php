@@ -58,6 +58,8 @@ class ControllerCheckoutGuest extends Controller {
 			$this->data['fax'] = '';
 		}
                 
+                
+                
                 if (isset($this->session->data['guest']['postcode'])) {
 			$this->data['postcode'] = $this->session->data['guest']['postcode'];				
 		} else {
@@ -206,9 +208,9 @@ class ControllerCheckoutGuest extends Controller {
 				$json['error']['telephone'] = $this->language->get('error_telephone-no');
 			}
                         
-                        if ((utf8_strlen($this->request->post['fax']) > 96) || !preg_match('/^\d+$/', $this->request->post['fax'])) {
-				$json['error']['fax'] = $this->language->get('error_fax-no');
-			}
+//                        if ((utf8_strlen($this->request->post['fax']) > 96) || !preg_match('/^\d+$/', $this->request->post['fax'])) {
+//				$json['error']['fax'] = $this->language->get('error_fax-no');
+//			}
                         
                         if ((utf8_strlen($this->request->post['postcode']) > 96) || !preg_match('/^\d+$/', $this->request->post['postcode'])) {
 				$json['error']['postcode'] = $this->language->get('error_postcode-no');
@@ -222,14 +224,22 @@ class ControllerCheckoutGuest extends Controller {
 ////                               $this->error['telephone']=$this->language->get('error_telephone-no');
 //                        }
 //                        
-//                        if ((utf8_strlen($this->request->post['fax']) < 3) || (utf8_strlen($this->request->post['fax']) > 32)) {
+//                        if ((utf8_strlen($this->request->post['fax']) < 8) || (utf8_strlen($this->request->post['fax']) > 32)) {
 //				$json['error']['fax'] = $this->language->get('error_fax');
 //			}
-//                        
+////                        
 //                        if(!preg_match('/^\d+$/', $this->request->post['fax'])){
-////                               $this->error['fax']=$this->language->get('error_fax-no');
+//                               $json['error']['fax']=$this->language->get('error_fax-no');
 //                        }
-//                        
+                        if ((utf8_strlen($this->request->post['fax']) > 1) ) {   
+                            if ((utf8_strlen($this->request->post['fax']) <8 ) || (utf8_strlen($this->request->post['fax']) >12 )) {
+                                    $json['error']['fax'] = $this->language->get('error_fax');
+                            }
+                            if(!preg_match('/^\d+$/', $this->request->post['fax'])){
+                                    $json['error']['fax'] = $this->language->get('error_fax-no');                                
+                            }
+			}
+                        
 //                        if ((utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
 //				$json['error']['postcode'] = $this->language->get('error_postcode');
 //			}
@@ -264,6 +274,8 @@ class ControllerCheckoutGuest extends Controller {
 			if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
 				$json['error']['address_1'] = $this->language->get('error_address_1');
 			}
+                        
+                        
 	
 			if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
 				$json['error']['city'] = $this->language->get('error_city');

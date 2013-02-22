@@ -589,10 +589,11 @@ $('#button-guest').live('click', function() {
 		},			
 		success: function(json) {
 			$('.warning, .error').remove();
-			
 			if (json['redirect']) {
 				location = json['redirect'];
 			} else if (json['error']) {
+                            			console.log(json['error']);
+
 				if (json['error']['warning']) {
 					$('#payment-address .checkout-content').prepend('<div class="warning" style="display: none;">' + json['error']['warning'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
 					
@@ -641,6 +642,10 @@ $('#button-guest').live('click', function() {
 				
 				if (json['error']['zone']) {
 					$('#payment-address select[name=\'zone_id\'] + br').after('<span class="error">' + json['error']['zone'] + '</span>');
+				}
+                                
+				if (json['error']['fax']) {
+					$('#payment-address input[name=\'fax\'] + br').after('<span class="error">' + json['error']['fax'] + '</span>');
 				}
 			} else {
 				<?php if ($shipping_required) { ?>	

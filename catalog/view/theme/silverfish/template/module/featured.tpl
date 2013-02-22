@@ -33,7 +33,7 @@
             
 <!--            <div id="price-cart">-->
               
-              <?php echo $product['special']; ?>
+              <?php $product['special']; ?>
 <!--                <div id="featuredcart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>-->
           
 <!--          </div>-->

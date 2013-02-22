@@ -11,7 +11,7 @@
 
 
 <div id="affiliate-right">
-    <?php echo $column_left; ?>
+   <!-- <?php echo $column_left; ?>-->
   <!-- <?php echo $column_right; ?>-->
 </div>
     
@@ -38,7 +38,7 @@
   <div class="content">
     <ul>
       <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-<!--      <li><a href="<?php echo $logoutnew; ?>">Logout</a></li>-->
+      <li><a href="<?php echo $logoutnew; ?>">Logout</a></li>
     </ul>
   </div>
 

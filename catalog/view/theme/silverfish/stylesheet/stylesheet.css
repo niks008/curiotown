@@ -32,7 +32,7 @@ h2 {
      /*   font: Myriad pro;*/
      font-family: 'Source Sans Pro', sans-serif;
 	font-size: 11px;
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-bottom: 5px;
         font-weight: normal;
 	text-shadow: 0 0 1px rgba(0, 0, 0, .01);
@@ -152,6 +152,7 @@ label {
 .featured .name {
     float: left;
     width: 100%;
+    height: 40px;
 }
 
 #search-content {
@@ -695,6 +696,13 @@ font-family: 'Source Sans Pro', sans-serif;
         
         
 }
+
+.content > ul {
+    padding-left: 14px;
+    display: inline-block;
+    width: 100%;
+}
+
 #menu > ul > li {
 	position: relative;
 	float: left;
@@ -711,7 +719,7 @@ font-family: 'Source Sans Pro', sans-serif;
 	line-height: 6px;
 	text-decoration: none;
 	display: block;
-	padding: 6px 35px 11px 55px;
+	padding: 6px 14px 11px 55px;
 /*	margin-bottom: 5px;*/
 	z-index: 6;
 	position: relative;
@@ -936,7 +944,7 @@ background-image: -webkit-gradient(
 
 #tab-related {
     float: left;
-    width: 450px;
+    width: 675px;
     margin-left: 50px;
 }
 
@@ -1211,15 +1219,10 @@ a.button {
 }
 #product-continue {
     float: left;
-    width: 126px;
-    height: 21px;
+    width: 132px;
+    height: 24px;
+/*    padding-left: 220px;*/
     margin-top: 18px;
-    cursor: pointer;
-    background-color: #FDB813;
-    padding: 4px 0px 0px 8px;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 7px;
 }
 
 #product-checkout {
@@ -1241,6 +1244,7 @@ a.button {
 input.button {
 	margin: 0;
 	border: 0;
+        margin-bottom: 8px;
 	/*padding: 5px 8px 4px 7px;*/
 }
 a.button:hover, input.button:hover {
@@ -1363,6 +1367,7 @@ a.button:hover, input.button:hover {
     height: 62px;
     color: #000000;
     overflow: hidden;
+    height: 71px;
 }
 
 .author b {
@@ -1846,10 +1851,18 @@ font-family: Arial, Helvetica, sans-serif;
     margin-right: 13px;
     vertical-align: top;
     width: 240px;
+    
 }
 .product-grid > div .name{
     float: left;
     width: 100%;
+    height: 40px;
+}
+
+.box-product .name{
+     float: left;
+    width: 100%;
+    height: 40px;
 }
 
 #column-left + #column-right + #content .product-grid > div {
@@ -2094,7 +2107,7 @@ font-family: Arial, Helvetica, sans-serif;
 }
 .product-info .cart {
 	border-bottom: 1px dashed #b2b2b2;
-	padding: 5px 5px 24px 5px;
+	padding: 5px 5px 15px 5px;
 	margin-bottom: 20px;
 	color: #4D4D4D;
 	overflow: auto;
@@ -2145,7 +2158,13 @@ font-family: Arial, Helvetica, sans-serif;
         border-bottom: 1px dashed #b2b2b2;
 }
 
-
+.jqzoom {
+    cursor: crosshair;
+    float: left;
+    position: relative;
+    z-index: 99;
+/*   float: right;*/
+}
 
 .review-list .author {
 	float: left;
@@ -2686,13 +2705,13 @@ font-family: Arial, Helvetica, sans-serif;
     float: right;
 }
 
-#curators-cooming-soon {
+#curators-coming-soon {
     float: left;
     width: 100%;
     height: 450px;
 }
 
-#coming-soon {
+#curators-coming-soon h1{
     float: left;
     width: 200px;
     font-size: 16px;

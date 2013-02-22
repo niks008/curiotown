@@ -157,6 +157,7 @@ $('#payment-address select[name=\'country_id\']').bind('change', function() {
 			$('.wait').remove();
 		},			
 		success: function(json) {
+                        console.log(json);
 			if (json['postcode_required'] == '1') {
 				$('#payment-postcode-required').show();
 			} else {

@@ -31,6 +31,11 @@ function newPopup(url){
 }
 </script>-->
 
+    <script type='text/javascript' src='catalog/view/javascript/jquery/jquery-1.7.1.min.js'></script>  
+    <script type='text/javascript' src='catalog/view/javascript/jquery/jquery.jqzoom-core-pack.js'></script>
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/silverfish/stylesheet/jquery.jqzoom.css"/> 
+
+
 <link media="screen" rel="stylesheet" href="colorbox.css" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="jquery.colorbox-min.js" type="text/javascript"></script>
@@ -80,6 +85,9 @@ $(function() {
 
 <link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font">
 
+
+
+
 <script src="http://cdn.webrupee.com/js" type="text/javascript"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
@@ -125,7 +133,7 @@ DD_belatedPNG.fix('#logo img');
   <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
   
   <?php } ?>
-  <?php if(!isset($_SESSION['affiliate_id'])){ ?>
+  
   <div id="free-shipping">
       
       <?php "Free Shipping Above Rs. 1000/-"?>
@@ -146,6 +154,9 @@ DD_belatedPNG.fix('#logo img');
   
   
   <div id="welcome_header">
+      
+      <?php if(!isset($_SESSION['affiliate_id'])){ ?>
+      
                             <?php if (!$logged) { ?>
                             <?php echo $text_welcome; ?>
       
@@ -153,6 +164,7 @@ DD_belatedPNG.fix('#logo img');
                             <?php echo $text_logged; ?>
       
                             <?php } ?>
+      <?php } ?>
       
             <div id="links_header">
                 <a href="<?php echo $account; ?>"><?php echo $text_account; ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -265,7 +277,7 @@ DD_belatedPNG.fix('#logo img');
       <h2>Create an account</h2>
   </div> 
  -->
- <?php } ?>
+ 
   <div id="border"></div>
   
 </div>
@@ -381,7 +393,7 @@ DD_belatedPNG.fix('#logo img');
             </ul>
           </div> -->
       </li>
-<!--    <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li> -->
+    <li><a href="http://curiotown.com/blog/" target="_blank">BLOG</a></li> 
 <!--    <li><a href="<?php echo $gifting; ?>"><?php echo $text_gifting; ?></a></li> -->
     
   </ul>

@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-attribute"><?php echo $tab_attribute; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-discount"><?php echo $tab_discount; ?></a><a href="#tab-special"><?php echo $tab_special="Limited Edition"; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-reward"><?php echo $tab_reward; ?></a><a href="#tab-design"><?php echo $tab_design; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-attribute"><?php echo $tab_attribute; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-discount"><?php echo $tab_discount; ?></a><a href="#tab-special"><?php echo $tab_special="Special Price"; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-reward"><?php echo $tab_reward; ?></a><a href="#tab-design"><?php echo $tab_design; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -523,6 +523,7 @@
                 <td class="left"><?php echo $entry_customer_group; ?></td>
                 <td class="right"><?php echo $entry_quantity; ?></td>
                 <td class="right"><?php echo $entry_priority; ?></td>
+                <td class="right">Percentage</td>
                 <td class="right"><?php echo $entry_price; ?></td>
                 <td class="left"><?php echo $entry_date_start; ?></td>
                 <td class="left"><?php echo $entry_date_end; ?></td>
@@ -542,8 +543,9 @@
                     <?php } ?>
                     <?php } ?>
                   </select></td>
-                <td class="right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" size="2" /></td>
+                <td class="right"><input type="text" class = "percentOff" title = "<?php echo $discount_row; ?>"  name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" size="2" /></td>
                 <td class="right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" size="2" /></td>
+                <td class="right"><input type="text" class = "percentOff" title = "<?php echo $discount_row; ?>" name="product_discount[<?php echo $discount_row; ?>][discount_percent]" value=""  size="2" /></td>
                 <td class="right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][price]" value="<?php echo $product_discount['price']; ?>" /></td>
                 <td class="left"><input type="text" name="product_discount[<?php echo $discount_row; ?>][date_start]" value="<?php echo $product_discount['date_start']; ?>" class="date" /></td>
                 <td class="left"><input type="text" name="product_discount[<?php echo $discount_row; ?>][date_end]" value="<?php echo $product_discount['date_end']; ?>" class="date" /></td>
@@ -1014,8 +1016,9 @@ function addDiscount() {
     html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>';
     <?php } ?>
     html += '    </select></td>';		
-    html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" size="2" /></td>';
+    html += '    <td class="right"><input type="text" class = "percentOff" title = "' + discount_row + '"  name="product_discount[' + discount_row + '][quantity]" value="" size="2" /></td>';
     html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" size="2" /></td>';
+    html += '    <td class="right"><input type="text" title = "' + discount_row + '" class = "percentOff" name="product_discount[' + discount_row + '][discount_percent]" value="" size="2" /></td>';
 	html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][price]" value="" /></td>';
     html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" class="date" /></td>';
 	html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" class="date" /></td>';
@@ -1113,5 +1116,22 @@ $('.time').timepicker({timeFormat: 'h:m'});
 $('#tabs a').tabs(); 
 $('#languages a').tabs(); 
 $('#vtab-option a').tabs();
+$(document).ready(function(){
+	$('.percentOff').live('input',function(){
+		var title = $(this).attr('title');
+		var fnameq = 'product_discount[' + title + '][quantity]';
+		var quantity = $('input[name="' +fnameq+ '"]').val();
+		var fnamed = 'product_discount[' + title + '][discount_percent]';
+		var discount = $('input[name="' +fnamed+ '"]').val();
+		if(quantity != '' && discount != ''){
+			var price = parseInt($('input[name="price"]').val());
+			var newPrice = (price - (discount/100 * price))*quantity;
+			var fnamep = 'product_discount[' + title + '][price]';
+			$('input[name="' +fnamep+'"]').val(newPrice);
+		}
+		
+ 	});
+});
 //--></script> 
+
 <?php echo $footer; ?>

@@ -20,12 +20,18 @@
     <?php if ($thumb || $images) { ?>
     <div class="left">
       <?php if ($thumb) { ?>
-      <div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>
+        
+      <div class="image">
+          <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="jqzoom" rel='gal1'>
+              <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a>
+      </div>
+        
       <?php } ?>
       <?php if ($images) { ?>
       <div class="image-additional">
+          <a href="#" title="<?php echo $heading_title; ?>" rel="{gallery: 'gal1', smallimage: '<?php echo $thumb; ?>',largeimage: '<?php echo $popup; ?>'}"><img src="<?php echo $thumb2; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
         <?php foreach ($images as $image) { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="colorbox"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+        <a href="#" title="<?php echo $heading_title; ?>" rel="{gallery: 'gal1', smallimage: '<?php echo $image['thumb2']; ?>',largeimage: '<?php echo $image['popup']; ?>'}"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
         <?php } ?>
       </div>
       <?php } ?>
@@ -217,18 +223,21 @@
       <?php } ?>
       <div class="cart">
         <div><?php echo $text_qty; ?>
+            
           <input type="text" class="quantity" name="quantity" size="2" value="<?php echo $minimum; ?>" />
           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
           &nbsp;
-          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" />
+          
+        </div></br></br>
+          
+          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" /></br>
           &nbsp; <div id="add-to-wishlist"><a onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a></div><br />
-        </div>
   
        <!-- <div><span>&nbsp;&nbsp;&nbsp;<?php echo $text_or; ?>&nbsp;&nbsp;&nbsp;</span></div> -->
           
 <!--          <a onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a></div> -->
         <?php if ($minimum > 1) { ?>
-        <div class="minimum"><?php echo $text_minimum; ?></div>
+<!--        <div class="minimum"><?php echo $text_minimum; ?></div>-->
         <?php } ?>
       </div>
  
@@ -260,6 +269,8 @@
                  <a class="addthis_button_preferred_1"></a>
                  <a class="addthis_button_preferred_2"></a>
                  <a class="addthis_button_preferred_3"></a>
+                 <a class="addthis_button_preferred_5"></a>
+                 <a class="addthis_button_preferred_6"></a>
              <a class="addthis_button_compact"></a>
             </div>-->
 <!--        <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> -->
@@ -471,6 +482,7 @@
 $('.colorbox').colorbox({
 	overlayClose: true,
 	opacity: 0.5
+         
 });
 //--></script> 
 <script type="text/javascript"><!--
@@ -494,7 +506,7 @@ $('#button-cart').bind('click', function() {
 			if (json['success']) {
 //				$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
 //                                
-				$.colorbox({html:'<div class="success-continue">' +json['success']+ '</div><div id="product-continue">Continue Shopping</div><div id="product-checkout"><a class="button" href="http://curiotown.com/index.php?route=checkout/checkout">Checkout</a></div>',opacity:0.3, width:500, height:125});
+				$.colorbox({html:'<div class="success-continue">' +json['success']+ '</div><div id="product-continue"><a class="button" href="<?php echo $newPath; ?>">Continue Shopping</a></div><div id="product-checkout"><a class="button" href="http://curiotown.com/index.php?route=checkout/checkout">Checkout</a></div>',opacity:0.3, width:500, height:125});
 				$('#cont-button, #product-continue').click(function(){
                                     $.colorbox.close();
                                 });
@@ -610,7 +622,7 @@ $('document').ready(function(){
     $('.quantity').live('input', function() {
     
     var value = $(this).val();
-    
+
     var key = $('input[name="product_id"]').val();
     if(value != ""){
     if($.isNumeric(value)){
@@ -628,8 +640,10 @@ $('document').ready(function(){
                                                 success: function(html){
                                                 if(html=="success"){
                                                     $.colorbox.close();
+                                                    
                                                  }else{
                                                    $.colorbox({html:html});
+                                                   $('.quantity').val(<?php echo $minimum; ?>);
                                                  }
                                                 
                                                 /*alert(html);*/
@@ -641,11 +655,24 @@ $('document').ready(function(){
                                                     }
                                            });
             }else{
-       		alert('Numeric values only.');
+                 
+       		  alert('Numeric values only.');
+                  $('.quantity').val(<?php echo $minimum; ?>);
+                
        }
        }
     })
                                       
  });
+</script>
+
+<script type="text/javascript">              
+
+      $(document).ready(function(){  
+               $('.jqzoom').jqzoom({  
+                                    zoomType: 'innerzoom'  
+                                });  
+    });  
+
 </script>
 <?php echo $footer; ?>

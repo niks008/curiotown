@@ -59,8 +59,7 @@ class ControllerModuleLatest extends Controller {
 			'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
       		'separator' => false
    		);
-                
-                
+
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_module'),
 			'href'      => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'),
