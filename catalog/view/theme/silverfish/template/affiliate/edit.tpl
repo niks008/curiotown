@@ -114,7 +114,7 @@
       </table>
     </div>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></div>
+      <div class="left-affiliate"><a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></div>
       <div class="right">
         <input type="submit" value="<?php echo $button_continue; ?>" class="button" />
       </div>

@@ -287,6 +287,10 @@ class ControllerAffiliateEdit extends Controller {
     	if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
       		$this->error['city'] = $this->language->get('error_city');
     	}
+        
+        if(!preg_match('/[^A-Za-z0-9?!]/', $this->request->post['city'])){
+            $this->error['city']=$this->language->get('error_city-no');
+        }
 		
 		$this->load->model('localisation/country');
 		

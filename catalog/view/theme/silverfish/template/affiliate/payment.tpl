@@ -43,7 +43,7 @@
         </tbody>
         <tbody id="payment-cheque" class="payment">
           <tr>
-            <td><?php echo $entry_cheque; ?></td>
+            <td><span class="required">*</span><?php echo $entry_cheque; ?></td>
             <td><input type="text" name="cheque" value="<?php echo $cheque; ?>" /></td>
           </tr>
         </tbody>
@@ -78,7 +78,7 @@
       </table>
     </div>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></div>
+      <div class="left-affiliate"><a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></div>
       <div class="right"><input type="submit" value="<?php echo $button_continue; ?>" class="button" /></div>
     </div>
   </form>

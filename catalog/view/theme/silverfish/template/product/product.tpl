@@ -6,7 +6,7 @@
   </div>
 
 <?php echo $column_left; ?>
-    <?php echo $column_right; ?>
+
 
 
 <div id="content"><?php echo $content_top; ?>
@@ -323,7 +323,11 @@
       </a>
 </div>-->
 
-
+<div id="live-chat-product">
+   <div id="column-right">
+  <?php echo $column_right; ?>
+  </div>
+</div>
 
 <div id="tab-description" class="tab-content"><?php echo $description; ?></div>
   <?php if ($attribute_groups) { ?>

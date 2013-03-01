@@ -13,6 +13,9 @@
 <?php if ($icon) { ?>
 
 
+
+
+
 <link href="<?php echo $icon; ?>" rel="icon" />
 <?php } ?>
 <?php foreach ($links as $link) { ?>
@@ -30,6 +33,9 @@ function newPopup(url){
 
 }
 </script>-->
+
+
+<meta name="google-site-verification" content="NpoMmxGxwxOsl6Saovfz4tI2jphRcJUjAJX18-K3-gs" />
 
     <script type='text/javascript' src='catalog/view/javascript/jquery/jquery-1.7.1.min.js'></script>  
     <script type='text/javascript' src='catalog/view/javascript/jquery/jquery.jqzoom-core-pack.js'></script>
@@ -65,24 +71,6 @@ $(function() {
 </script>
 
 
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "ur-c1675368-9e54-b597-81e3-f771c27e2fb", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
-
-<!--<script type="text/javascript">
-    $(document).ready(function() {
-     
-            $('a[href=#top]').click(function(){
-            $('html, body').animate({scrollTop:0}, 'slow');
-            return false;
-            });
-     
-    });
-</script>-->
-
-
-
 <link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font">
 
 
@@ -113,6 +101,13 @@ DD_belatedPNG.fix('#logo img');
 </script>
 <![endif]-->
 <?php echo $google_analytics; ?>
+
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-c1675368-9e54-b597-81e3-f771c27e2fb", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+
 </head>
 <body>
 <!--    <div id="scroll_top">
@@ -154,6 +149,13 @@ DD_belatedPNG.fix('#logo img');
   
   
   <div id="welcome_header">
+      
+      
+      <?php if(isset($_SESSION['affiliate_id'])){ ?>
+               
+               <h9>Hi ,</h9> <a href="index.php?route=affiliate/account"><?php echo $firstname; ?></a> ( <a href="<?php echo $logoutnew; ?>">Logout</a> )
+             
+      <?php } ?>
       
       <?php if(!isset($_SESSION['affiliate_id'])){ ?>
       

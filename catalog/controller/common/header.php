@@ -32,7 +32,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['lang'] = $this->language->get('code');
 		$this->data['direction'] = $this->language->get('direction');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
-                
+                $this->data['logoutnew'] = $this->url->link('affiliate/logout');
                 
 		// Whos Online
 		if ($this->config->get('config_customer_online')) {
@@ -57,6 +57,26 @@ class ControllerCommonHeader extends Controller {
 			}
 						
 			$this->model_tool_online->whosonline($ip, $this->customer->getId(), $url, $referer);
+		}
+                
+                
+                
+                $this->load->model('affiliate/affiliate');
+			$this->load->model('affiliate/transaction');
+                        
+                        
+                        $this->data['balance'] = $this->currency->format($this->model_affiliate_transaction->getBalance());
+			
+		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+			$affiliate_info = $this->model_affiliate_affiliate->getAffiliate($this->affiliate->getId());
+		}
+
+		if (isset($this->request->post['firstname'])) {
+			$this->data['firstname'] = $this->request->post['firstname'];
+		} elseif (!empty($affiliate_info)) {
+			$this->data['firstname'] = $affiliate_info['firstname'];
+		} else {
+			$this->data['firstname'] = '';
 		}
 				
 		$this->language->load('common/header');
@@ -92,7 +112,12 @@ class ControllerCommonHeader extends Controller {
     	$this->data['text_search'] = $this->language->get('text_search');
 		$this->data['text_welcome'] = sprintf($this->language->get('text_welcome'), $this->url->link('account/login', '', 'SSL'), $this->url->link('account/register', '', 'SSL'));
 		$this->data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
-		$this->data['text_account'] = $this->language->get('text_account');
+		
+//                $this->data['text_welcome-affiliate'] = sprintf($this->language->get('text_welcome-affiliate'), $this->url->link('affiliate/login', '', 'SSL'), $this->url->link('affiliate/register', '', 'SSL'));
+//		$this->data['text_logged-affiliate'] = sprintf($this->language->get('text_logged-affiliate'), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('affiliate/logout', '', 'SSL'));
+//                
+                
+                $this->data['text_account'] = $this->language->get('text_account');
     	$this->data['text_checkout'] = $this->language->get('text_checkout');
         $this->data['text_about_us'] = $this->language->get('text_about_us');
                 $this->data['text_contact'] = $this->language->get('text_contact');

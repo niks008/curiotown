@@ -12,6 +12,12 @@ $_['text_email']          = 'email';
 $_['text_password']       = 'password';
 $_['text_welcome']        = '<a href="%s" id="link_content">Sign In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="%s">Sign Up</a>';
 $_['text_logged']         = 'Hi,  <a href="%s">%s</a> <b>(</b> <a href="%s">Logout</a> <b>)</b>';
+
+
+//$_['text_welcome']        = '<a href="%s" id="link_content">Sign In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="%s">Sign Up</a>';
+//$_['text_logged']         = 'Hi,  <a href="%s">%s</a> <b>(</b> <a href="%s">Logout</a> <b>)</b>';
+
+
 $_['text_account']        = 'My Account';
 $_['text_checkout']       = 'Checkout';
 $_['text_about_us']       = 'ABOUT US';

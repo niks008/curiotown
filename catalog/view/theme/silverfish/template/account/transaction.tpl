@@ -7,7 +7,7 @@
   </div>
 <div id="content"><?php echo $content_top; ?>
     </br>
-  <h1><?php echo $heading_title; ?></h1>
+  <h1><?php echo $heading_title; ?></h1></br>
   <p><?php echo $text_total; ?><b> <?php echo $total; ?></b>.</p>
   <table class="list">
     <thead>
@@ -35,7 +35,7 @@
   </table>
   <div class="pagination"><?php echo $pagination; ?></div>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
+    <div class="left"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

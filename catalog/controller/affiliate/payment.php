@@ -148,6 +148,19 @@ class ControllerAffiliatePayment extends Controller {
 		} else {
 			$this->template = 'default/template/affiliate/payment.tpl';
 		}
+                
+               
+                
+//                if ((utf8_strlen($this->request->post['cheque']) < 2) || (utf8_strlen($this->request->post['cheque']) > 128)) {
+//      		$this->error['cheque'] = $this->language->get('error_cheque');
+//                }
+//
+//                if(!preg_match('/[^A-Za-z0-9?!]/', $this->request->post['cheque'])){
+//                    $this->error['cheque']=$this->language->get('error_cheque-no');
+//                }
+                
+                
+                
 		
 		$this->children = array(
 			'common/column_left',

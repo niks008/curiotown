@@ -20,7 +20,7 @@
     <textarea name="link" cols="40" rows="5"></textarea>
   </p>
   <div class="buttons">
-    <div class="left"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
+    <div class="left-affiliate"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--

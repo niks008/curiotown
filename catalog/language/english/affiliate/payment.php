@@ -22,4 +22,10 @@ $_['entry_bank_branch_number']  = 'ABA/BSB number (Branch Number):';
 $_['entry_bank_swift_code']     = 'SWIFT Code:';
 $_['entry_bank_account_name']   = 'Account Name:';
 $_['entry_bank_account_number'] = 'Account Number:';
+
+
+//Error
+$_['error_cheque']                 = 'Cheque Payee Name must be between 2 to 128 characters!';
+$_['error_cheque-no']                 = 'Cheque Payee Name nust be in characters!';
+
 ?>

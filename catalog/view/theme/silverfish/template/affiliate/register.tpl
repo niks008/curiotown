@@ -212,7 +212,7 @@
     </div>
     <?php } else { ?>
     <div class="buttons">
-      <div class="left">
+      <div class="left-affiliate">
         <input type="submit" value="<?php echo $button_continue; ?>" class="button" />
       </div>
     </div>

@@ -568,6 +568,8 @@
               <tr>
                 <td class="left"><?php echo $entry_customer_group; ?></td>
                 <td class="right"><?php echo $entry_priority; ?></td>
+                <td class="right"><?php echo $entry_quantity; ?></td>
+                <td class="right">Percentage</td>
                 <td class="right"><?php echo $entry_price; ?></td>
                 <td class="left"><?php echo $entry_date_start; ?></td>
                 <td class="left"><?php echo $entry_date_end; ?></td>
@@ -587,7 +589,10 @@
                     <?php } ?>
                     <?php } ?>
                   </select></td>
+                  
                 <td class="right"><input type="text" name="product_special[<?php echo $special_row; ?>][priority]" value="<?php echo $product_special['priority']; ?>" size="2" /></td>
+                <td class="right"><input type="text" class = "percentOff" title = "<?php echo $special_row; ?>"  name="product_special[<?php echo $special_row; ?>][quantity]" value="<?php echo $product_special['quantity']; ?>" size="2" /></td>
+                <td class="right"><input type="text" class = "percentOff" title = "<?php echo $special_row; ?>" name="product_special[<?php echo $special_row; ?>][special_percent]" value=""  size="2" /></td>
                 <td class="right"><input type="text" name="product_special[<?php echo $special_row; ?>][price]" value="<?php echo $product_special['price']; ?>" /></td>
                 <td class="left"><input type="text" name="product_special[<?php echo $special_row; ?>][date_start]" value="<?php echo $product_special['date_start']; ?>" class="date" /></td>
                 <td class="left"><input type="text" name="product_special[<?php echo $special_row; ?>][date_end]" value="<?php echo $product_special['date_end']; ?>" class="date" /></td>
@@ -598,7 +603,7 @@
             <?php } ?>
             <tfoot>
               <tr>
-                <td colspan="5"></td>
+                <td colspan="6"></td>
                 <td class="left"><a onclick="addSpecial();" class="button"><?php echo $button_add_special; ?></a></td>
               </tr>
             </tfoot>
@@ -1045,7 +1050,9 @@ function addSpecial() {
     <?php } ?>
     html += '    </select></td>';		
     html += '    <td class="right"><input type="text" name="product_special[' + special_row + '][priority]" value="" size="2" /></td>';
-	html += '    <td class="right"><input type="text" name="product_special[' + special_row + '][price]" value="" /></td>';
+    html += '    <td class="right"><input type="text" class = "percentOff" title = "' + special_row + '"  name="product_special[' + special_row + '][quantity]" value="" size="2" /></td>';
+    html += '    <td class="right"><input type="text" title = "' + special_row + '" class = "percentOff" name="product_special[' + special_row + '][special_percent]" value="" size="2" /></td>';
+        html += '    <td class="right"><input type="text" name="product_special[' + special_row + '][price]" value="" /></td>';
     html += '    <td class="left"><input type="text" name="product_special[' + special_row + '][date_start]" value="" class="date" /></td>';
 	html += '    <td class="left"><input type="text" name="product_special[' + special_row + '][date_end]" value="" class="date" /></td>';
 	html += '    <td class="left"><a onclick="$(\'#special-row' + special_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
@@ -1127,6 +1134,28 @@ $(document).ready(function(){
 			var price = parseInt($('input[name="price"]').val());
 			var newPrice = (price - (discount/100 * price))*quantity;
 			var fnamep = 'product_discount[' + title + '][price]';
+			$('input[name="' +fnamep+'"]').val(newPrice);
+		}
+		
+ 	});
+});
+//--></script> 
+
+<script type="text/javascript"><!--
+$('#tabs a').tabs(); 
+$('#languages a').tabs(); 
+$('#vtab-option a').tabs();
+$(document).ready(function(){
+	$('.percentOff').live('input',function(){
+		var title = $(this).attr('title');
+		var fnameq = 'product_special[' + title + '][quantity]';
+		var quantity = $('input[name="' +fnameq+ '"]').val();
+		var fnamed = 'product_special[' + title + '][special_percent]';
+		var discount = $('input[name="' +fnamed+ '"]').val();
+		if(quantity != '' && discount != ''){
+			var price = parseInt($('input[name="price"]').val());
+			var newPrice = (price - (discount/100 * price))*quantity;
+			var fnamep = 'product_special[' + title + '][price]';
 			$('input[name="' +fnamep+'"]').val(newPrice);
 		}
 		
